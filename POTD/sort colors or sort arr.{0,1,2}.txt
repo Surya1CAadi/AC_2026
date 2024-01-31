@@ -1,0 +1,9 @@
+ void sortColors(vector<int>& ar) {
+        for(int i=0;i<ar.size();i++){
+        for(int j=i+1;j<ar.size();j++){
+            if(ar[i]>ar[j])
+            swap(ar[i],ar[j]);
+                }
+
+        }
+    }

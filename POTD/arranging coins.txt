@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int arrangeCoins(int n) {
+
+        // binary search
+        int s = 0;
+        int e = n;
+        while(s <= e) {
+            long long k = s + (e-s)/2;
+            long long m = k*(k+1)/2;
+            if(m == n) {
+                return int(k);
+            } else if(m > n) {
+                e = k - 1;
+            } else {
+                s = k + 1;
+            }
+        }
+        return e;
+    }
+};

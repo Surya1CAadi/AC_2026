@@ -1,0 +1,13 @@
+ int search(vector<int>& ar, int tar) {
+        int s=0,i=0,j=ar.size()-1;
+        while(i<=j){
+           int m=(i+j)/2;
+            if(ar[m]==tar)
+            return m;
+            else if(ar[m]>tar)
+            j=m-1;
+            else i=m+1;
+        }
+        return -1;
+        
+    }

@@ -1,0 +1,27 @@
+int missingNumber(vector<int>& nums) {
+        nums.push_back(nums[0]);
+        int n=nums.size();
+        // for(int i=1;i<=n;i++){
+        //     s+=i-nums[i-1];
+        
+        // }
+        int i=0;
+       while(i<n){
+           if(nums[nums[i]]!=nums[i])        swap(nums[nums[i]],nums[i]);
+        else i++;}
+
+        // sort(nums.begin(),nums.end());
+        for( i=0;i<n;i++){
+            if(i!=nums[i])
+            return i;
+        }
+        return i;
+    }
+
+//     int missingNumber(vector<int>& nums) {
+//         int s=0,n=nums.size();
+//         for(int i=0;i<n;i++){
+//             s+=nums[i];
+//         }
+//         return n*(n+1)/2-s;
+//     }

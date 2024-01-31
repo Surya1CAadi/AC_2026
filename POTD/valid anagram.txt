@@ -1,0 +1,25 @@
+ bool isAnagram(string s, string t) {
+       // unordered_map<char,int>arr;
+        int n=s.length(),m=t.length();
+        if(n!=m)
+        return 0;
+        int arr[26]={0};
+        for(int i=0;i<n&&i<m;i++)
+        {
+            arr[s[i]-97]++;
+            arr[t[i]-97]--;
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(arr[s[i]-97]!=0)
+            return 0;
+        }
+        
+      
+    //  sort(s.begin(), s.end());
+    //  sort(t.begin(), t.end());
+    // if(s!=t)
+    // return 0;
+     return 1;
+}
