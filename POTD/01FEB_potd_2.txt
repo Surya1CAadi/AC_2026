@@ -1,0 +1,20 @@
+//counting -Ve no in a sorted array
+//1351 leetcode usinng binary search
+int countNegatives(vector<vector<int>>& grid) {
+        int n=grid.size(),sum=0,m=grid[0].size();
+        for(int i=0;i<n;i++){
+            int s=0,e=m-1,mid,ans=-1;
+            while(s<=e){
+                mid=s+(e-s)/2;
+                if(grid[i][mid]<0)
+                {
+                    ans=mid;
+                    e=mid-1;;
+                }
+                else
+                s=mid+1;
+            }
+            if(ans!=-1)
+            sum+=m-ans;
+        }
+        return sum;

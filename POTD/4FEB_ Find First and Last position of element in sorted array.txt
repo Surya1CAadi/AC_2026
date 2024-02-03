@@ -1,0 +1,36 @@
+//: Find First and Last position of element in sorted array 
+// using binary search to find lower bound and upper bound
+vector<int> searchRange(vector<int>& nu, int t) {
+        int n=nu.size();
+        vector<int>ans;
+
+//lower bound
+        int i=0,j=n-1;
+        while(i<=j){
+        int m=(i+j)/2;
+        if(nu[m]<t)
+        i=m+1;
+        else
+        j=m-1;
+        }
+
+//upper bound
+        int I=0,J=n-1;
+        while(I<=J){
+        int m=(I+J)/2;
+        if(nu[m]>t)
+        J=m-1;
+        else
+        I=m+1;
+        }
+
+        if(i>J||n==0){
+            ans.push_back(-1);
+            ans.push_back(-1);
+            return ans; 
+        }
+        ans.push_back(i);
+        ans.push_back(J);
+        return ans;
+
+    }

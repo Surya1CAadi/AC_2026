@@ -1,0 +1,29 @@
+// the-k-weakest-rows-in-a-matrix  using binary and vector pair 
+// leet 1337
+vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+          int n=mat.size();
+          vector<int>ar;
+          vector<pair<int,int>>arr;
+        for(int i=0;i<n;i++){
+           int m=mat[0].size();
+            int s=0,e=m-1,mid,ans=-1;
+            while(s<=e){
+                mid=s+(e-s)/2;
+                if(mat[i][mid]<1)
+                {
+                    ans=mid;
+                    e=mid-1;;
+                }
+                else
+                s=mid+1;
+            }
+            if(ans==-1)
+            ans=m;
+            arr.push_back(make_pair(ans,i));
+        }
+        sort(arr.begin(),arr.end());
+        for(int i=0;i<k;i++){
+            ar.push_back(arr[i].second);
+        }
+        return ar;
+    }
