@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxDistance(vector<int>& nums1, vector<int>& nums2) {
+       int ans=0;
+        for(int i=0;i<nums1.size();i++){
+            int s=i,e=nums2.size();
+            int dif=0;
+            while(s<=e&&s<nums2.size()){
+                int mid=s+(e-s)/2;
+                if(nums1[i]<=nums2[mid]){
+                    dif=mid;
+                    s=mid+1;
+                }
+                else
+                e=mid-1;
+            }
+            dif=dif-i;
+            ans=max(ans,dif);
+        }
+        return ans;
+    }
+};

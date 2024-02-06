@@ -1,0 +1,46 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int n = nums.size();
+        /// using binary search
+        int s=0,e=n-1,ans=n;
+    sort(nums.begin(),nums.end());
+       while(s<=e){
+           int mid=s+(e-s)/2;
+           if(nums[mid]!=mid){
+               ans=mid;
+               e=mid-1;
+           }
+           else s=mid+1;
+       }
+        return ans;;
+    }
+};
+
+/// TC -- O(n)
+    // int missingNumber(vector<int>& nums) {
+    //     int i = 0;
+    //     int n = nums.size();
+        //nums.push_back(nums[0]);  // adding this to avoid overflow as it contain n; [0,n]; and this have only 
+        // while (i < n) {
+        //     if (nums[nums[i]] != nums[i])
+        //         swap(nums[nums[i]], nums[i]);
+        //     else
+        //         i++;
+        // }
+    //     for (i = 0; i < n; i++) {
+    //         if (i != nums[i])
+    //             return i;
+    //     }
+    //     return i;
+    // }
+
+
+//TC O(n)
+//     int missingNumber(vector<int>& nums) {        //maths formula approach;
+//         int s=0,n=nums.size();
+//         for(int i=0;i<n;i++){
+//             s+=nums[i];
+//         }
+//         return n*(n+1)/2-s;
+//     }
