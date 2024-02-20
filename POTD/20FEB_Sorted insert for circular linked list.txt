@@ -1,0 +1,45 @@
+class Solution
+{
+    public:
+    Node *sortedInsert(Node* head, int n)
+    {
+       
+       //Your code here
+       Node *ans=new Node(n),*temp=head;
+       if(head==NULL){
+       ans->next=ans;
+       return ans;
+       }
+      if(head->next==head){
+          if(temp->data<=n){
+            head->next=ans;
+            ans->next=head;  
+            return head;
+          }
+          else{
+            ans->next=head;     
+            head->next=ans;
+          }
+      return ans;
+      }
+      Node*pre=temp;
+        temp=head->next;
+          while(temp!=head){
+          if(pre->data<=n&&temp->data>=n){
+          break;
+          }
+          pre=temp;
+          temp=temp->next;
+      }
+    if(head->data>n){
+    ans->next=head;
+    pre->next=ans;
+    return ans;
+    }
+      ans->next=temp;
+      pre->next=ans;    
+        
+       return head;
+    }
+    
+};
