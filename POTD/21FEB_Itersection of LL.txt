@@ -9,7 +9,46 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        ListNode *head1=headA,*head2=headB;
+        ListNode *head1=headA,*head2=headB,*temp;
+        //more optimize
+        while(head1!=NULL&&head2!=NULL){
+            head1=head1->next;
+            head2=head2->next;
+        }
+        int i=0;
+        // LL B badi hai 
+        if(head1==NULL)
+        {
+            while(head2!=NULL){
+                i++;
+                head2=head2->next;
+            }
+            head1=headA;
+            head2=headB;
+            while(i--){
+                head2=head2->next;
+            }
+        }
+        // LL A badi hai 
+        else {
+             while(head1!=NULL){
+                i++;
+                head1=head1->next;
+            }
+            head2=headB;
+            head1=headA;
+             while(i--){
+                head1=head1->next;
+            }
+        }
+         while(head1!=NULL&&head2!=NULL){
+             if(head1==head2)
+             return head1;
+            head1=head1->next;
+            head2=head2->next;
+        }
+
+
         //BRUTE FORCE solution
         // while(head1!=0){
         //     while(head2!=NULL){
@@ -24,21 +63,21 @@ public:
         
 
         // THODA SA OPTIMISE HUA HAI
-        unordered_map<ListNode*,int>arr;
-         while(head1!=NULL){
-             arr[head1]=1;
-             head1=head1->next;
-         }
-         while(head2!=NULL){
-             arr[head2]*=-1;
-             head2=head2->next;
-         }
-         head1=headA,head2=headB;
-         while(head1!=NULL){
-             if(arr[head1]==-1)
-             return head1;
-             head1=head1->next;
-         }
+        // unordered_map<ListNode*,int>arr;
+        //  while(head1!=NULL){
+        //      arr[head1]=1;
+        //      head1=head1->next;
+        //  }
+        //  while(head2!=NULL){
+        //      arr[head2]*=-1;
+        //      head2=head2->next;
+        //  }
+        //  head1=headA,head2=headB;
+        //  while(head1!=NULL){
+        //      if(arr[head1]==-1)
+        //      return head1;
+        //      head1=head1->next;
+        //  }
          return NULL;
     }
 };
