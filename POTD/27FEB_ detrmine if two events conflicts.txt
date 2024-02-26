@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool haveConflict(vector<string>& event1, vector<string>& event2) {
+
+        // return event2[0] <= event1[1] && event2[1] >= event1[0];
+
+        vector<int> t = {0, 0, 0, 0};
+        for (int i = 0; i < 2; i++) {
+            string h = "", m = "";
+            string s = event1[i];
+            h = s[0] ;
+            h+= s[1];
+            m = s[3] ;
+            m+= s[4];
+           int H=stoi(h);
+            t[i]=H*60+stoi(m);
+        }
+        for (int i = 0; i < 2; i++) {
+            string h = "", m = "";
+            string s = event2[i];
+            h = s[0] ;
+            h+= s[1];
+            m = s[3] ;
+            m+= s[4];
+           int H=stoi(h);
+            t[i+2]=H*60+stoi(m);
+        }
+        if(t[0]<=t[2]&&t[1]>=t[2])
+        return true;
+
+        return 0;
+    }
+};
