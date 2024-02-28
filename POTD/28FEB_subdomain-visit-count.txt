@@ -1,0 +1,35 @@
+class Solution {
+public:
+    vector<string> subdomainVisits(vector<string>& cpd) {
+        int n=cpd.size();
+        unordered_map<string,int>arr;
+        for(int i=0;i<n;i++){
+            int m1=0,j=0;
+            string N="",s=cpd[i];
+            for(j=0;j<s.length()-1;j++){
+                if(s[j]!=' '){
+                    N+=s[j];
+                    m1++;
+                }
+                else break;
+            }
+           int m=stoi(N);
+            int n1=s.length();
+            for(j=m1;j<s.length();j++){
+                if(s[j]==' '||s[j]=='.'){
+                    string str=s.substr(j+1, n1-j-1);
+                    arr[str]+=m;
+                }
+            }
+        }
+        vector<string> ans;
+        for(auto i:arr){
+            string s=to_string(i.second);
+            s+=' ';
+             s+=i.first;
+            ans.push_back(s);
+        }
+            
+        return ans;
+    }
+};
