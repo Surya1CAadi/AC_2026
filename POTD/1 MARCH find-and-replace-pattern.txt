@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+        unordered_map<char,int>ar;
+        vector<string>ans;
+        for(int i=0;i<pattern.length();i++){
+            ar[pattern[i]]++;
+        }
+        for(int i=0;i<words.size();i++){
+            string s=words[i];
+            unordered_map<char,int>a;
+        for(int i=0;i<pattern.length();i++){
+            a[s[i]]++;
+        }
+        bool k=1;
+        for(int i=0;i<pattern.length();i++){
+           if( a[s[i]]!=ar[pattern[i]]){
+           k=0;
+           break;
+           }
+           else if(i<pattern.length()-1&&(s[i]==s[i+1]&&pattern[i]!=pattern[i+1]||s[i]!=s[i+1]&&pattern[i]==pattern[i+1]))
+           {
+               k=0;
+               break;
+           }
+        }
+        if(k)
+        ans.push_back(s);
+        }
+        return ans;
+    }
+};
