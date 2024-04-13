@@ -1,0 +1,17 @@
+ void help(vector<vector<int>>& ans, vector<int>& nums, int i,vector<int> ar) {
+        if (i == nums.size())
+            return;
+        for (int j = i; j < nums.size(); j++) {
+            ar.push_back(nums[j]);
+            ans.push_back(ar);
+            help(ans, nums, j + 1, ar);
+            ar.pop_back(); // to remove last added element  ... when we back 
+        }
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> ar;
+        vector<vector<int>> ans;
+        ans.push_back(ar);
+        help(ans, nums, 0, ar);
+        return ans;
+    }

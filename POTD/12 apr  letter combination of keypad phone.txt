@@ -1,0 +1,20 @@
+ vector<string> st{"",    "",    "abc",  "def", "ghi",
+                       "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    vector<string> ans;
+    void help(int i,  string dg, string ag) {
+        if (i >= dg.size()) {
+            ans.push_back(ag);
+            return;
+        }
+        string s=st[dg[i]-'0'];
+        for(int k=0;k<s.size();k++){
+             help(i+1,dg, ag+s[k]);
+        }
+    }
+    vector<string> letterCombinations(string dg) {
+        if(dg=="")
+        return ans;
+        string ag = "";
+        help(0,  dg, ag);
+        return ans;
+    }

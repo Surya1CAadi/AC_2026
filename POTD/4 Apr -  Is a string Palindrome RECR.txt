@@ -1,0 +1,17 @@
+    bool help(string s,int i){
+	        if(i>=s.size()/2)
+	        return true;
+	        if(s[i]!=s[s.size()-i-1])
+	        return false;
+	        help(s,i+1);
+	        return 1;
+	    }
+		string is_palindrome(int n)
+		{
+		    // Code here.
+		    string s=to_string(n);
+		    bool a=help(s,0);
+		    if(a)
+		    return "Yes";
+		    return "No";
+		}

@@ -1,0 +1,33 @@
+    void quickSort(int arr[], int l, int h)
+    {
+        if(l>=h)
+        return;
+        // code herex
+        int k=l;
+        for(int i=l+1;i<=h;i++){
+            if(arr[i]<arr[l])
+            k++;
+        }
+        swap(arr[k],arr[l]);
+        int i=l,j=h;
+        while(i<k){
+            while(arr[i]<arr[k]){
+                i++;
+            }
+            while(arr[j]>=arr[k]){
+                j--;
+            }
+            if(i<k&&arr[i]>=arr[j])
+            swap(arr[i++],arr[j--]);
+        }
+         quickSort(arr, l, k-1);
+          quickSort(arr, k+1, h);
+    }
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+       // Your code here
+       quickSort(arr, low, high);
+       
+    }

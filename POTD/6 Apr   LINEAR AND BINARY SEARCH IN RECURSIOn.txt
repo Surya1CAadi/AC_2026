@@ -1,0 +1,28 @@
+int help(int arr[],int s,int e,int k){
+        if(s>e)                            /// binary search
+        return -1;
+        int mid=(e+s)/2;
+        if(arr[mid]==k)
+        return mid;
+        if(arr[mid]>k)
+      return  help(arr,s,mid-1,k);
+       return help(arr,mid+1,e,k);
+    }
+    int binarysearch(int arr[], int n, int k) {
+        // code here
+        return help(arr,0,n-1,k);
+    }
+
+// linear serach
+
+int help(vector<int> &arr,int i,int k,int n){
+        if(i>=n)
+        return -1;
+        if(arr[i]==k)
+        return i+1;
+      return help(arr,i+1,k,n);
+    }
+    int search(int n, int k, vector<int> &arr) {
+        // code here
+        return help(arr,0,k,n);
+    }

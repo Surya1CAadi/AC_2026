@@ -1,0 +1,8 @@
+	int sum(int arr[], int n) {
+	    // code herere
+	    if(n<0)
+	    return 0;
+	    int ans=0;
+	    ans=ans+arr[n-1]+sum(arr,n-1);
+	    return ans;
+	}
